@@ -1,0 +1,17 @@
+<section class="w-75 mx-auto bg-main-light p-3">
+<form [formGroup]="shippingForm" (ngSubmit)="payment(shippingForm)">
+    <div>
+        <label for="details ">Details</label>
+        <input formControlName="details" type="text" class="form-control" id="details">
+    </div>
+    <div>
+        <label for="phone ">Phone</label>
+        <input formControlName="phone" type="number" class="form-control" id="phone">
+    </div>
+    <div>
+        <label for="city ">City</label>
+        <input formControlName="city" type="text" class="form-control" id="city">
+    </div>
+    <button type="submit" class="btn bg-main text-white my-4">Pay</button>
+</form>
+</section>

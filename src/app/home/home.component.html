@@ -1,0 +1,28 @@
+<app-mainslider></app-mainslider>
+<app-categories></app-categories>
+<div class="container">
+    <div class="row gy-3">
+        <div>
+            <input [(ngModel)]="term" type="text" placeholder="Search by Name ..." class="form-control w-75 mx-auto">
+        </div>
+        <div *ngFor="let item of productsList|search:term" class="col-md-2">
+            <a [routerLink]="['/productDetails', item._id]">
+                <div class="product overflow-hidden px-2">
+                    <img [src]="item.imageCover" class="w-100" alt="">
+                    {{item._id}}
+                    <span class="text-main fw-bold">{{item.category.name}}</span>
+                    <h3>{{item.title|seemore:2}}</h3>
+                    <div class="d-flex justify-content-between">
+                        <span>{{item.price}} L.E</span>
+                        <span><i class="fa-solid fa-star rating-color"></i>{{item.ratingsAverage}}</span>
+                    </div>
+                </div>
+            </a>
+
+            <div class="my-2">
+                <button (click)="addToMyWishList(item._id)" class="btn loveBtn"><i class="fa-solid fa-heart h3" [id]="item._id"></i></button>
+                <button (click)="addToMyCart(item._id)" class="btn bg-main text-white w-100">+ADD</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+
+.brandImg{
+    transition: all 0.7s ease;
+    border: 1px solid black;
+    margin: 5px;
+}
+
+.brandImg:hover{
+box-shadow: 10px 5px 5px 8px black;
+}

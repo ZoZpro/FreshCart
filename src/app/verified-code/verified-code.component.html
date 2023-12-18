@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="w-75 mx-auto py-5">
+        <form [formGroup]="FogetPasswordForm">
+            <div>
+                <label for="gth">Code</label>
+                <input formControlName="resetCode" id="gth" type="text" class="form-control">
+
+            </div>
+            <div>
+
+                <button type="submit"   *ngIf="!isLoading" [disabled]="FogetPasswordForm.invalid" (click)="onSubmit()" class="btn bg-main text-white my-3">Verify</button>
+                <button type="submit" *ngIf="isLoading" class="btn bg-main text-white my-3"><i
+                        class="fa-solid fa-spinner fa-spin text-white"></i></button>
+
+            </div>
+        </form>
+    </div>

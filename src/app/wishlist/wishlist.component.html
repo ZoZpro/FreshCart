@@ -1,0 +1,26 @@
+<div class="bg-main-light p-3 w-75 mx-auto my-3" *ngIf="wishListData">
+    <h2>My Wish List </h2>
+    <div class="row my-2 align-items-center" *ngFor="let item of wishListData">
+        <div class="col-md-1">
+            <img [src]="item.imageCover" class="w-100" alt="">
+        </div>
+        <div class="col-md-11 d-flex justify-content-between">
+            <div>
+                <h3 class="fs-5">{{item.brand.name}}</h3>
+                <p class="text-main">{{item.price}} EGP</p>
+                <button (click)="removeItem(item.id)" class="btn">
+                    <i class="fa-solid fa-trash-can text-danger"></i>   
+                    <span class="mx-2">Remove</span>
+                </button>
+            </div>
+           
+        </div>
+        
+           
+        
+    </div>
+
+    <div>
+        <button  class="btn bg-main text-white" (click)="addToCart()">Add to Cart</button>
+    </div>
+</div>

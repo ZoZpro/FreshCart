@@ -1,0 +1,31 @@
+<div class="bg-main-light p-3 w-75 mx-auto my-3" *ngIf="cartData">
+    <h2>Shipping Cart</h2>
+    <p class="text-main fs-3">Total Price: {{cartData.totalCartPrice}} EGP</p>
+    <div class="row my-2 align-items-center" *ngFor="let item of cartData.products">
+        <div class="col-md-1">
+            <img [src]="item.product.imageCover" class="w-100" alt="">
+        </div>
+        <div class="col-md-11 d-flex justify-content-between">
+            <div>
+                <h3 class="fs-5">{{item.product.title}}</h3>
+                <p class="text-main">{{item.price}} EGP</p>
+                <button (click)="removeItem(item.product._id)" class="btn">
+                    <i class="fa-solid fa-trash-can text-danger"></i>   
+                    <span class="mx-2">Remove</span>
+                </button>
+            </div>
+            <div class="">
+                <button (click)="updateItemCount(item.product._id,item.count+1)" class="btn btn-sm border-success">+</button>
+                <span class="mx-2">{{item.count}}</span>
+                <button (click)="updateItemCount(item.product._id,item.count-1)" class="btn btn-sm border-success">-</button>
+            </div>
+        </div>
+        
+           
+        
+    </div>
+
+    <div>
+        <button [routerLink]="['/checkout',cartData._id]" class="btn bg-main text-white">Check Out</button>
+    </div>
+</div>

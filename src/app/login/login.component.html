@@ -1,0 +1,30 @@
+
+<div class="container">
+    <div class="w-75 mx-auto py-5">
+        <form [formGroup]="loginForm">
+            <h2>Login Now:</h2>
+            <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+         
+            <div>
+                <label for="email">email</label>
+                <input formControlName="email" type="email" class="form-control">
+                <div *ngIf="loginForm.get('email')?.errors&&loginForm.get('email')?.touched" class="alert alert-danger">
+                    <p *ngIf="loginForm.get('email')?.getError('required')">email is required</p>
+                    <p *ngIf="loginForm.get('email')?.getError('email')">email is not vaild</p>
+                </div>
+            </div>
+            <div>
+                <label for="password">password</label>
+                <input formControlName="password" type="password" class="form-control">
+                <div *ngIf="loginForm.get('password')?.errors&&loginForm.get('password')?.touched" class="alert alert-danger">
+                    <p *ngIf="loginForm.get('password')?.getError('required')">password is required</p>
+                    <p *ngIf="loginForm.get('password')?.getError('pattern')">password should have a Special char and lower or Upper case</p>
+                </div>
+            </div>
+            <button class="btn btn-danger" routerLink="/forget-password">forget your password ?</button>          
+            <button *ngIf="!isLoading" [disabled]="loginForm.invalid" (click)="sendData(loginForm)" class="btn bg-main text-white my-3">Login </button>
+            <button *ngIf="isLoading" class="btn bg-main text-white my-3"><i class="fa-solid fa-spinner fa-spin text-white"></i></button>
+        
+        </form>
+    </div>
+</div>
